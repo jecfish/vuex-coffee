@@ -4,7 +4,32 @@ const state = {
 }
 
 // getters
-const getters = {}
+const getters = {
+    cartCount: state =>
+        state.list
+            .map(item => item.quantity)
+            .reduce((acc, curr) => acc + curr, 0),
+    cartTotal: (state, _, rootState) =>
+        state.list
+            .map(c => rootState.coffees.list.find(x => x.name === c.name).price * c.quantity)
+            .reduce((acc, curr) => acc + curr, 0),
+    cartList: (state, _, rootState) =>
+        state.list
+            .map(item => {
+                // get coffee object by name
+                const { price, ...props } = rootState.coffees.list.find(
+                    c => c.name === item.name
+                );
+
+                return {
+                    quantity: item.quantity,
+                    unitPrice: price,
+                    price: item.quantity * price, // sum quantity
+                    ...props
+                };
+            })
+            .sort((a, b) => (a.name < b.name ? -1 : 1))
+}
 
 // actions
 const actions = {

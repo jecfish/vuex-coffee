@@ -11,17 +11,22 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "AppHeader",
   computed: {
-    ...mapState({
-      cartCount: state =>
-        state.cart.list
-          .map(item => item.quantity)
-          .reduce((acc, curr) => acc + curr, 0)
+    // Option 2
+    ...mapGetters({
+      cartCount: "cart/cartCount"
     })
+    // Option 1
+    // ...mapState({
+    //   cartCount: state =>
+    //     state.cart.list
+    //       .map(item => item.quantity)
+    //       .reduce((acc, curr) => acc + curr, 0)
+    // })
   }
 };
 </script>

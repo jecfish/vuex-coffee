@@ -19,7 +19,7 @@
               <button type="button" @click="removeOneCartItem(item.name)">-</button>
             </div>
           </div>
-          <div>{{ item.price | currrency }}</div>
+          <div>{{ item.price | currencys }}</div>
           <div>
             <button class="delete" type="button" @click="removeCartItem(item.name)">x</button>
           </div>
@@ -30,32 +30,37 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import AppPay from "../parts/Pay.vue";
 
 export default {
   name: "AppCartPage",
-  components: { AppPay }, 
-  computed: mapState({
-    cartList: state =>
-      state.cart.list
-        .map(item => {
-          // get coffee object by name
-          const { price, ...props } = state.coffees.list.find(
-            c => c.name === item.name
-          );
+  components: { AppPay },
+  computed: {
+    ...mapGetters({
+      cartList: "cart/cartList"
+    }),
+    ...mapState({
+      cartList: state =>
+        state.cart.list
+          .map(item => {
+            // get coffee object by name
+            const { price, ...props } = state.coffees.list.find(
+              c => c.name === item.name
+            );
 
-          return {
-            quantity: item.quantity,
-            unitPrice: price,
-            price: item.quantity * price, // sum quantity
-            ...props
-          };
-        })
-        .sort((a, b) => (a.name < b.name ? -1 : 1))
-  }),
+            return {
+              quantity: item.quantity,
+              unitPrice: price,
+              price: item.quantity * price, // sum quantity
+              ...props
+            };
+          })
+          .sort((a, b) => (a.name < b.name ? -1 : 1))
+    })
+  },
   methods: {
-    ...mapActions('cart', ['addToCart', 'removeOneCartItem', 'removeCartItem'])
+    ...mapActions("cart", ["addToCart", "removeOneCartItem", "removeCartItem"])
   }
 };
 </script>

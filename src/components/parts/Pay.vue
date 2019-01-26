@@ -3,20 +3,31 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "AppPay",
-  computed: mapState({
-    total: state => state.cart.list
-      .map(c => state.coffees.list.find(x => x.name === c.name).price * c.quantity)
-      .reduce((acc, curr) => acc + curr, 0)
-  }),
+  computed: {
+    // option 2
+    ...mapGetters({
+      total: 'cart/cartTotal'
+    }),
+    // option 1
+    // ...mapState({
+    //   total: state =>
+    //     state.cart.list
+    //       .map(
+    //         c =>
+    //           state.coffees.list.find(x => x.name === c.name).price * c.quantity
+    //       )
+    //       .reduce((acc, curr) => acc + curr, 0)
+    // })
+  },
   methods: {
     pay() {
       alert("Yay, order placed. Start a new order!");
-      this.$store.dispatch('cart/emptyCart');
-      this.$router.push('/menu');
+      this.$store.dispatch("cart/emptyCart");
+      this.$router.push("/menu");
     }
   }
 };
