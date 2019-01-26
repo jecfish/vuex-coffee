@@ -19,7 +19,7 @@
               <button type="button" @click="removeOneCartItem(item.name)">-</button>
             </div>
           </div>
-          <div>{{ item.price }}</div>
+          <div>{{ item.price | currrency }}</div>
           <div>
             <button class="delete" type="button" @click="removeCartItem(item.name)">x</button>
           </div>
