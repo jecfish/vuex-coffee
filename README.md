@@ -1,5 +1,7 @@
 # vue-coffee
 
+Demo Vuex State Management with Coffee. 
+
 ## Project setup
 ```
 yarn install
@@ -13,6 +15,14 @@ yarn run serve
 ### Compiles and minifies for production
 ```
 yarn run build
+```
+
+### Deploy to Firebase HOsting
+```
+yarn run deploy
+
+* take note that it will deploy development version to hosting. This is done on purpose for demo. To disable it, go to `package.json` > `scripts` > `predeploy`, remove the `--mode development`
+
 ```
 
 ### Run your tests
