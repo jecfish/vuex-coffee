@@ -1,6 +1,7 @@
 # vue-coffee
 
 Demo Vuex State Management with Coffee. 
+To start the tutorial, please checkout "starter" branch
 
 ## Project setup
 ```

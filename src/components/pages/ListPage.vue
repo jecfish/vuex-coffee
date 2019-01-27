@@ -24,12 +24,16 @@ import AppPay from "../parts/Pay.vue";
 export default {
   name: "AppListPage",
   components: { AppCup, AppPay },
-  computed: mapState({
-    list: state => state.coffees.list
-  }),
+  computed: {
+    ...mapState({
+      list: state => state.coffees.list
+    })
+  },
   created() {
     if (this.$store.state.coffees.list.length) return;
-    this.$store.dispatch("coffees/getCoffeeList")
+    // Option 2
+    this.$store.dispatch("coffees/getCoffeeList");
+    // Option 1
     // this.$store.commit("coffees/getCoffeeListSync")
   },
   methods: {

@@ -37,27 +37,29 @@ export default {
   name: "AppCartPage",
   components: { AppPay },
   computed: {
+    // Option 2
     ...mapGetters({
       cartList: "cart/cartList"
     }),
-    ...mapState({
-      cartList: state =>
-        state.cart.list
-          .map(item => {
-            // get coffee object by name
-            const { price, ...props } = state.coffees.list.find(
-              c => c.name === item.name
-            );
+    // Option 1
+    // ...mapState({
+    //   cartList: state =>
+    //     state.cart.list
+    //       .map(item => {
+    //         // get coffee object by name
+    //         const { price, ...props } = state.coffees.list.find(
+    //           c => c.name === item.name
+    //         );
 
-            return {
-              quantity: item.quantity,
-              unitPrice: price,
-              price: item.quantity * price, // sum quantity
-              ...props
-            };
-          })
-          .sort((a, b) => (a.name < b.name ? -1 : 1))
-    })
+    //         return {
+    //           quantity: item.quantity,
+    //           unitPrice: price,
+    //           price: item.quantity * price, // sum quantity
+    //           ...props
+    //         };
+    //       })
+    //       .sort((a, b) => (a.name < b.name ? -1 : 1))
+    // })
   },
   methods: {
     ...mapActions("cart", []),
