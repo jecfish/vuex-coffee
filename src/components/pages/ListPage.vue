@@ -28,8 +28,8 @@ export default {
     list: state => state.coffees.list
   }),
   created() {
-    // this.$store.dispatch("coffees/getCoffeeList")
-    this.$store.commit("coffees/getCoffeeListSync")
+    this.$store.dispatch("coffees/getCoffeeList")
+    // this.$store.commit("coffees/getCoffeeListSync")
   },
   methods: {
     ...mapMutations("cart", ["addToCart"])

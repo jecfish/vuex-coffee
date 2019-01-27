@@ -12,13 +12,13 @@ const getters = {}
 const actions = {
   async getCoffeeList({ commit }) {
     const list = await coffee.getList()
-    commit('setList', list)
+    commit('getListSuccess', list)
   }
 }
 
 // mutations
 const mutations = {
-  setList(state, coffees) {
+  getListSuccess(state, coffees) {
     state.list = coffees
   },
   getCoffeeListSync(state) {
