@@ -1,4 +1,4 @@
-# vue-coffee
+# vuex-coffee
 
 Demo Vuex State Management with Coffee. 
 

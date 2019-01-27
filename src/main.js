@@ -13,4 +13,4 @@ new Vue({
   router,
   // TODO: Add Our Vuex store
   render: h => h(App)
-}).$mount('#app-container')
+}).$mount('#app')
