@@ -38,6 +38,10 @@ ul {
   justify-content: center;
   border-bottom: 4px solid black;
   padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: rgb(250, 255, 255);
 }
 
 li {
