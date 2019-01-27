@@ -28,6 +28,7 @@ export default {
     list: state => state.coffees.list
   }),
   created() {
+    if (this.$store.state.coffees.list.length) return;
     this.$store.dispatch("coffees/getCoffeeList")
     // this.$store.commit("coffees/getCoffeeListSync")
   },
