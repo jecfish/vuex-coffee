@@ -33,10 +33,15 @@ const getters = {
 
 // actions
 const actions = {
-    addToCart({ state, commit }, coffee) {
-        // console.log(state, coffee);
+}
 
-        const { quantity = 0 } = state.list.find(x => x.name === coffee) || {};
+// mutations
+const mutations = {
+    setCartList(state, { items }) {
+        state.list = items
+    },
+    addToCart(state, coffee) {
+        const { quantity = 0 } = state.list.find(x => x.name === coffee) || {}
 
         const list = [
             ...state.list.filter(x => x.name !== coffee),
@@ -45,9 +50,20 @@ const actions = {
             }
         ];
 
-        commit('setCartList', { items: list })
+        state.list = list
     },
-    removeOneCartItem({ state, commit }, coffee) {
+    emptyCart() {
+        state.list = []
+    },
+    removeCartItem(state, coffee) {
+        const list = [...state.list.filter(x => x.name !== coffee)]
+
+        state.list = list
+    },
+    addOneCartItem(state, coffee) {
+        mutations.addToCart(state, coffee)
+    },
+    removeOneCartItem(state, coffee) {
         const item = state.list.find(x => x.name === coffee);
 
         const list = [
@@ -55,25 +71,8 @@ const actions = {
             ...(item.quantity - 1 <= 0 ? [] : [{ name: item.name, quantity: item.quantity - 1 }])
         ];
 
-        commit('setCartList', { items: list })
-    },
-    removeCartItem({ state, commit }, coffee) {
-        const list = [...state.list.filter(x => x.name !== coffee)];
-
-        commit('setCartList', { items: list })
-    },
-    emptyCart({ commit }) {
-        const list = []
-
-        commit('setCartList', { items: list })
+        state.list = list
     }
-}
-
-// mutations
-const mutations = {
-    setCartList(state, { items }) {
-        state.list = items
-    },
 
 }
 

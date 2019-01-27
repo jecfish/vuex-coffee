@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import coffees from './modules/coffees'
-import cart from './modules/cart'
+import coffees from './modules/coffees.state'
+import cart from './modules/cart.state'
 
 Vue.use(Vuex)
 

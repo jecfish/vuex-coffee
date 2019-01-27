@@ -26,7 +26,7 @@ export default {
   methods: {
     pay() {
       alert("Yay, order placed. Start a new order!");
-      this.$store.dispatch("cart/emptyCart");
+      this.$store.commit("cart/emptyCart");
       this.$router.push("/menu");
     }
   }

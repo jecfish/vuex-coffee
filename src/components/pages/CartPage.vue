@@ -15,7 +15,7 @@
           <div>
             <span class="unit-desc">{{ item.unitPrice | currency }} x {{ item.quantity }}</span>
             <div class="unit-controller">
-              <button type="button" @click="addToCart(item.name)">+</button>
+              <button type="button" @click="addOneCartItem(item.name)">+</button>
               <button type="button" @click="removeOneCartItem(item.name)">-</button>
             </div>
           </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
 import AppPay from "../parts/Pay.vue";
 
 export default {
@@ -60,7 +60,8 @@ export default {
     })
   },
   methods: {
-    ...mapActions("cart", ["addToCart", "removeOneCartItem", "removeCartItem"])
+    ...mapActions("cart", []),
+    ...mapMutations("cart", ["addOneCartItem", "removeOneCartItem", "removeCartItem"])
   }
 };
 </script>

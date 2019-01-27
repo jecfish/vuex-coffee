@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import AppCup from "../parts/Cup.vue";
 import AppPay from "../parts/Pay.vue";
 
@@ -28,10 +28,11 @@ export default {
     list: state => state.coffees.list
   }),
   created() {
-    this.$store.dispatch('coffees/getCoffeeList');
+    // this.$store.dispatch("coffees/getCoffeeList")
+    this.$store.commit("coffees/getCoffeeListSync")
   },
   methods: {
-    ...mapActions('cart', ['addToCart'])
+    ...mapMutations("cart", ["addToCart"])
   }
 };
 </script>
