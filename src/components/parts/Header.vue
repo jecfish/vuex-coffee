@@ -2,31 +2,19 @@
   <ul>
     <li>
       <router-link to="/menu">menu</router-link>
-      <!-- <a routerLink="/menu" routerLinkActive="active">menu</a> -->
     </li>
     <li>
-      <router-link to="/cart">cart ({{ cartCount }})</router-link>
+      <!-- TODO: Replace 0 with CartCount -->
+      <router-link to="/cart">cart (0)</router-link>
     </li>
   </ul>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "AppHeader",
   computed: {
-    // Option 2
-    ...mapGetters({
-      cartCount: "cart/cartCount"
-    })
-    // Option 1
-    // ...mapState({
-    //   cartCount: state =>
-    //     state.cart.list
-    //       .map(item => item.quantity)
-    //       .reduce((acc, curr) => acc + curr, 0)
-    // })
+    // TODO: Calculate Cart Count
   }
 };
 </script>

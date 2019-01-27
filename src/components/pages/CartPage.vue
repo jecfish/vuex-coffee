@@ -10,18 +10,25 @@
           <div>Total</div>
           <div></div>
         </li>
-        <li v-for="item in cartList" :key="item.name">
-          <div>{{ item.name }}</div>
+        <!-- TODO: Loop Cart List -->
+        <li>
+          <!-- TODO: Coffee Name -->
+          <div></div>
           <div>
-            <span class="unit-desc">{{ item.unitPrice | currency }} x {{ item.quantity }}</span>
+            <!-- TODO: Unit Price, Quantity -->
+            <span class="unit-desc"></span>
             <div class="unit-controller">
-              <button type="button" @click="addOneCartItem(item.name)">+</button>
-              <button type="button" @click="removeOneCartItem(item.name)">-</button>
+              <!-- TODO: Handle Click +1 -->
+              <button type="button">+</button>
+              <!-- TODO: Handle Click -1 -->
+              <button type="button">-</button>
             </div>
           </div>
-          <div>{{ item.price | currency }}</div>
+          <!-- TODO: Price -->
+          <div></div>
           <div>
-            <button class="delete" type="button" @click="removeCartItem(item.name)">x</button>
+            <!-- TODO: Handle Click x -->
+            <button class="delete" type="button">x</button>
           </div>
         </li>
       </ul>
@@ -30,38 +37,19 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
 import AppPay from "../parts/Pay.vue";
 
 export default {
   name: "AppCartPage",
   components: { AppPay },
   computed: {
-    ...mapGetters({
-      cartList: "cart/cartList"
-    }),
-    ...mapState({
-      cartList: state =>
-        state.cart.list
-          .map(item => {
-            // get coffee object by name
-            const { price, ...props } = state.coffees.list.find(
-              c => c.name === item.name
-            );
-
-            return {
-              quantity: item.quantity,
-              unitPrice: price,
-              price: item.quantity * price, // sum quantity
-              ...props
-            };
-          })
-          .sort((a, b) => (a.name < b.name ? -1 : 1))
-    })
+    // TODO: get from state
+    cartList() {
+      return []
+    }
   },
   methods: {
-    ...mapActions("cart", []),
-    ...mapMutations("cart", ["addOneCartItem", "removeOneCartItem", "removeCartItem"])
+    // TODO: Handle AddOneCartItem, RemoveOneCartItem, RemoveCartItem
   }
 };
 </script>

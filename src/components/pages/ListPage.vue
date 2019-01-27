@@ -1,14 +1,18 @@
 <template>
   <div>
     <ul>
-      <li v-for="coffee in list" :key="coffee.name">
+      <!-- TODO: Loop Coffe List -->
+      <li>
         <h4>
-          {{ coffee.name }}
+          <!-- TODO: Coffee Name -->
           <br>
-          <small>{{ coffee.price | currency }}</small>
+          <!-- TODO: Unit Price -->
+          <small></small>
         </h4>
-        <div class="cup" @click="addToCart(coffee.name)">
-          <AppCup :item="coffee"/>
+        <!-- TODO: Handle Click Add to Cart -->
+        <div class="cup">
+          <!-- TODO: Pass down item Prop to cup -->
+          <!-- <AppCup/> -->
         </div>
       </li>
     </ul>
@@ -17,23 +21,21 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 import AppCup from "../parts/Cup.vue";
 import AppPay from "../parts/Pay.vue";
 
 export default {
   name: "AppListPage",
+  // eslint-disable-next-line
   components: { AppCup, AppPay },
-  computed: mapState({
-    list: state => state.coffees.list
-  }),
+  computed: {
+
+  },
   created() {
-    if (this.$store.state.coffees.list.length) return;
-    this.$store.dispatch("coffees/getCoffeeList")
-    // this.$store.commit("coffees/getCoffeeListSync")
+    // TODO:Get Coffee List
   },
   methods: {
-    ...mapMutations("cart", ["addToCart"])
+    // TODO: Handle AddtoCart
   }
 };
 </script>

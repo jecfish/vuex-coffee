@@ -1,33 +1,19 @@
 <template>
-  <button class="pay" type="button" @click="pay()">Total: {{ total | currency }}</button>
+  <!-- TODO: Show total -->
+  <button class="pay" type="button" @click="pay()">Total: {{ 0 | currency }}</button>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "AppPay",
   computed: {
-    // option 2
-    ...mapGetters({
-      total: 'cart/cartTotal'
-    }),
-    // option 1
-    // ...mapState({
-    //   total: state =>
-    //     state.cart.list
-    //       .map(
-    //         c =>
-    //           state.coffees.list.find(x => x.name === c.name).price * c.quantity
-    //       )
-    //       .reduce((acc, curr) => acc + curr, 0)
-    // })
+    // TODO: Calculate Total
   },
   methods: {
     pay() {
       alert("Yay, order placed. Start a new order!");
-      this.$store.commit("cart/emptyCart");
-      this.$router.push("/menu");
+      // TODO: empty cart & redirect to menu page
+      
     }
   }
 };

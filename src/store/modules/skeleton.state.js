@@ -1,4 +1,4 @@
-/** TODO: Complete this file */
+/** Demo Skeleton */
 
 // initial state
 const state = {}

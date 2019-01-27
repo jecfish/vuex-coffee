@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import router from './router'
-import store from './store'
 import App from './App.vue'
 
 Vue.config.productionTip = false
@@ -12,6 +11,6 @@ Vue.filter('currency', function (value) {
 
 new Vue({
   router,
-  store,
+  // TODO: Add Our Vuex store
   render: h => h(App)
 }).$mount('#app-container')
