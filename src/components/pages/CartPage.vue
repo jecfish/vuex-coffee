@@ -30,6 +30,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line
 import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
 import AppPay from "../parts/Pay.vue";
 

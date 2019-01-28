@@ -31,6 +31,19 @@ export default {
   },
   created() {
     if (this.$store.state.coffees.list.length) return;
+    // Option 3
+    this.$store.dispatch("coffees/getCoffeeList").then(x => {
+      // eslint-disable-next-line
+      console.log("yay", x);
+
+      if (this.$store.state.coffees.list.length) return;
+
+      // eslint-disable-next-line
+      console.error(
+        "opss, something went wrong, not able to fetch you coffee now!"
+      );
+    });
+
     // Option 2
     this.$store.dispatch("coffees/getCoffeeList");
     // Option 1
