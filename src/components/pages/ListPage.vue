@@ -45,7 +45,7 @@ export default {
     });
 
     // Option 2
-    this.$store.dispatch("coffees/getCoffeeList");
+    // this.$store.dispatch("coffees/getCoffeeList");
     // Option 1
     // this.$store.commit("coffees/getCoffeeListSync")
   },
